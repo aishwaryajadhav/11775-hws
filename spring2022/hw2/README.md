@@ -1,6 +1,6 @@
 # CMU 11-775 Spring 2022 Homework 2
 
-[PDF Writeup](docs/handout.pdf)
+[PDF Handout](docs/handout.pdf)
 
 In this homework we will perform a video classification task with visual features.
 
@@ -32,18 +32,19 @@ conda activate <path>
 
 You will be using two parts of data for this homework:
 
-* Data from [Homework 1](https://github.com/11775website/11775-hws/tree/master/spring2022/hw1#data-and-labels) which you should have downloaded. [Data link](https://drive.google.com/file/d/1WEINPdvQ1ZUELxaXlhHcvoOjEML8gYYY/view?usp=sharing).
-* A new larger set of test videos. [Data link]()
+* Data from [Homework 1](https://github.com/11775website/11775-hws/tree/master/spring2022/hw1#data-and-labels) which you should have downloaded. [AWS S3](https://cmu-11775-vm.s3.amazonaws.com/spring2022/11775_s22_data.zip).
+* A new larger set of test videos. [AWS S3](https://cmu-11775-vm.s3.amazonaws.com/spring2022/11775_s22_data_p2.zip).
 
 Both parts should be decompressed under the `data` directory.
-You can use [`gdown`](https://github.com/wkentaro/gdown) to directly download them into your AWS virtual machine:
+You can use [`gdown`](https://github.com/wkentaro/gdown) and `wget` to directly download them into your AWS virtual machine:
 
 ```bash
 mkdir data && cd data
-# Download and decompress part 1 data
-gdown --id 1WEINPdvQ1ZUELxaXlhHcvoOjEML8gYYY
+# Download and decompress part 1 data (no need if you still have it from HW1)
+wget https://cmu-11775-vm.s3.amazonaws.com/spring2022/11775_s22_data.zip
 unzip 11775_s22_data.zip
-gdown --id 
+# Download and decompress part 2 data
+wget https://cmu-11775-vm.s3.amazonaws.com/spring2022/11775_s22_data_p2.zip
 unzip 11775_s22_data_p2.zip
 ```
 
