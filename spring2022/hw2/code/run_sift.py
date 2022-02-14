@@ -52,9 +52,12 @@ def main(args):
     system.start()
     jobs = build_jobs(args)
     system.add_jobs(jobs)
-    for job in system.wait_jobs(len(jobs)):
-        continue
-    system.end()
+    try:
+        for job in system.wait_jobs(len(jobs)):
+            continue
+        system.end()
+    except:
+        system.terminate()
 
 
 if __name__ == '__main__':
