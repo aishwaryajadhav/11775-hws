@@ -1,5 +1,7 @@
 # CMU 11-775 Spring 2022 Homework 2
 
+[PDF Writeup](docs/handout.pdf)
+
 In this homework we will perform a video classification task with visual features.
 
 ## Recommended Hardware
@@ -7,7 +9,7 @@ In this homework we will perform a video classification task with visual feature
 This code template is built based on [PyTorch](https://pytorch.org) and [Pyturbo](https://github.com/CMU-INF-DIVA/pyturbo) to fully utilize the computation of multiple CPU cores and GPUs.
 SIFT feature, K-Means, and Bag-of-Words must run on CPUs, while CNN features and MLP classifiers can run on GPUs.
 For AWS, a `g4dn.4xlarge` instance should be sufficient for the full pipeline.
-During initial debugging, you are recommended to use a smaller CPU-only instance to save money.
+During initial debugging, you are recommended to use a smaller instance to save money, e.g., `g4dn.xlarge` or a CPU-only instance for the SIFT part.
 For more about AWS, see this [Doc](https://docs.google.com/document/d/1XkpGSzInT5TJz0hc0jUd7j5kGvuGO_wTOATW8pp4GCg/edit?usp=sharing) (Andrew ID required).
 
 ## Install Dependencies
@@ -31,7 +33,7 @@ conda activate <path>
 You will be using two parts of data for this homework:
 
 * Data from [Homework 1](https://github.com/11775website/11775-hws/tree/master/spring2022/hw1#data-and-labels) which you should have downloaded. [Data link](https://drive.google.com/file/d/1WEINPdvQ1ZUELxaXlhHcvoOjEML8gYYY/view?usp=sharing).
-* A new larger set of test videos, available soon.
+* A new larger set of test videos. [Data link]()
 
 Both parts should be decompressed under the `data` directory.
 You can use [`gdown`](https://github.com/wkentaro/gdown) to directly download them into your AWS virtual machine:
@@ -41,6 +43,8 @@ mkdir data && cd data
 # Download and decompress part 1 data
 gdown --id 1WEINPdvQ1ZUELxaXlhHcvoOjEML8gYYY
 unzip 11775_s22_data.zip
+gdown --id 
+unzip 11775_s22_data_p2.zip
 ```
 
 ## Development and Debugging
