@@ -5,7 +5,7 @@ In this homework we will perform a video classification task with visual feature
 ## Recommended Hardware
 
 This code template is built based on [PyTorch](https://pytorch.org) and [Pyturbo](https://github.com/CMU-INF-DIVA/pyturbo) to fully utilize the computation of multiple CPU cores and GPUs.
-SIFT feature and Bag-of-Words must run on CPUs, while K-Means, CNN features, and MLP classifiers can run on GPUs.
+SIFT feature, K-Means, and Bag-of-Words must run on CPUs, while CNN features and MLP classifiers can run on GPUs.
 For AWS, a `g4dn.4xlarge` instance should be sufficient for the full pipeline.
 During initial debugging, you are recommended to use a smaller CPU-only instance to save money.
 For more about AWS, see this [Doc](https://docs.google.com/document/d/1XkpGSzInT5TJz0hc0jUd7j5kGvuGO_wTOATW8pp4GCg/edit?usp=sharing) (Andrew ID required).
@@ -33,8 +33,15 @@ You will be using two parts of data for this homework:
 * Data from [Homework 1](https://github.com/11775website/11775-hws/tree/master/spring2022/hw1#data-and-labels) which you should have downloaded. [Data link](https://drive.google.com/file/d/1WEINPdvQ1ZUELxaXlhHcvoOjEML8gYYY/view?usp=sharing).
 * A new larger set of test videos, available soon.
 
-You can use [`gdown`](https://github.com/wkentaro/gdown) with the above links to directly download them into your AWS virtual machine.
 Both parts should be decompressed under the `data` directory.
+You can use [`gdown`](https://github.com/wkentaro/gdown) to directly download them into your AWS virtual machine:
+
+```bash
+mkdir data && cd data
+# Download and decompress part 1 data
+gdown --id 1WEINPdvQ1ZUELxaXlhHcvoOjEML8gYYY
+unzip 11775_s22_data.zip
+```
 
 ## Development and Debugging
 
@@ -104,3 +111,6 @@ To train MLP with CNN features, run
 ```bash
 python code/run_mlp.py cnn --feature_dir data/cnn --num_features <num_feat>
 ```
+
+By default, training logs and predictions are stored under `data/mlp/cnn/version_xxx/`.
+You can directly submit the CSV file to [Kaggle](https://www.kaggle.com/c/11775-s22-hw1-p1/overview).

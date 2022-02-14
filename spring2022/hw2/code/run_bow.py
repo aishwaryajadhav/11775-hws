@@ -31,7 +31,8 @@ def parse_args(argv=None):
         '--model_dir', default=osp.join(
             osp.dirname(__file__), '../data/kmeans'))
     parser.add_argument(
-        '--bow_dir_prefix', default=osp.join(osp.dirname(__file__), '../data/bow'))
+        '--bow_dir_prefix', default=osp.join(
+            osp.dirname(__file__), '../data/bow'))
     parser.add_argument('--debug', action='store_true')
     args = parser.parse_args(argv)
     return args
