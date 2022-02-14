@@ -36,7 +36,7 @@ You will be using two parts of data for this homework:
 * A new larger set of test videos. [AWS S3](https://cmu-11775-vm.s3.amazonaws.com/spring2022/11775_s22_data_p2.zip).
 
 Both parts should be decompressed under the `data` directory.
-You can use [`gdown`](https://github.com/wkentaro/gdown) and `wget` to directly download them into your AWS virtual machine:
+You can directly download them into your AWS virtual machine:
 
 ```bash
 mkdir data && cd data
