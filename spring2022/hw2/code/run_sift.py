@@ -11,7 +11,7 @@ class ExtractSIFTFeature(System):
 
     def get_num_pipeline(self, resources, *, args):
         self.args = args
-        return len(resources.get('cpu')) // 2
+        return max(1, len(resources.get('cpu')) // 2)
 
     def get_stages(self, resources):
         stages = [

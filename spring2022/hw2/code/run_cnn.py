@@ -11,7 +11,7 @@ class ExtractCNNFeature(System):
 
     def get_num_pipeline(self, resources, *, args):
         self.args = args
-        return len(resources.get('gpu'))
+        return max(1, len(resources.get('gpu')))
 
     def get_stages(self, resources):
         resources_cpu = resources.select(cpu=True)
