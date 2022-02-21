@@ -41,7 +41,7 @@ class CNNFeature(Stage):
         """
         frame: [H x W x C] in uint8 [0, 255]
 
-        Return: Feature, [N x D]
+        Return: Feature, [D]
         """
         # TODO: extract CNN feature for the frame
         # Use self.model, whose input is [B x C x H x W] in float [0, 1]
