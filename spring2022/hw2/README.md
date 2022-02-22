@@ -6,7 +6,7 @@ In this homework we will perform a video classification task with visual feature
 
 ## Recommended Hardware
 
-This code template is built based on [PyTorch](https://pytorch.org) and [Pyturbo](https://github.com/CMU-INF-DIVA/pyturbo) to fully utilize the computation of multiple CPU cores and GPUs.
+This code template is built based on [PyTorch](https://pytorch.org) and [Pyturbo](https://github.com/CMU-INF-DIVA/pyturbo) for Linux to fully utilize the computation of multiple CPU cores and GPUs.
 SIFT feature, K-Means, and Bag-of-Words must run on CPUs, while CNN features and MLP classifiers can run on GPUs.
 For AWS, a `g4dn.4xlarge` instance should be sufficient for the full pipeline.
 During initial debugging, you are recommended to use a smaller instance to save money, e.g., `g4dn.xlarge` or a CPU-only equivalent for the SIFT part.
