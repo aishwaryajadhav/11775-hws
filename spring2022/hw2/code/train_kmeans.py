@@ -42,6 +42,7 @@ def parse_args(argv=None):
         '--model_dir', default=osp.join(
             osp.dirname(__file__), '../data/kmeans'))
     parser.add_argument('--seed', type=int, default=666)
+    parser.add_argument('--debug', action='store_true')
     args = parser.parse_args(argv)
     return args
 
@@ -50,7 +51,8 @@ def main(args):
     df = pd.read_csv(args.list_file_path)
     video_ids = df['Id']
     worker_fn = functools.partial(worker, args=args)
-    video_features = np.concatenate([*process_map(worker_fn, video_ids)])
+    map_fn = process_map if not args.debug else map
+    video_features = np.concatenate([*map_fn(worker_fn, video_ids)])
     print(video_features.shape)
     kmeans = KMeans(args.num_clusters, random_state=args.seed, verbose=1)
     kmeans.fit(video_features)
