@@ -17,6 +17,7 @@ class CNNFeature(Stage):
                           node_name='avgpool', replica_per_gpu=1):
         self.model_name = model_name
         self.node_name = node_name
+        self.model = None
         gpus = resources.get('gpu')
         self.num_gpus = len(gpus)
         if len(gpus) > 0:
@@ -24,18 +25,19 @@ class CNNFeature(Stage):
         return [resources]
 
     def reset(self):
-        gpu_ids = self.current_resource.get('gpu', 1)
-        if len(gpu_ids) >= 1:
-            self.device = 'cuda:%d' % (gpu_ids[0])
-            cudnn.fastest = True
-            cudnn.benchmark = True
-        else:
-            self.device = 'cpu'
-            self.logger.warn('No available GPUs, running on CPU.')
-        base_model = getattr(models, self.model_name)(pretrained=True)
-        self.model = create_feature_extractor(
-            base_model, {self.node_name: 'feature'})
-        self.model = self.model.to(self.device).eval()
+        if self.model is None:
+            gpu_ids = self.current_resource.get('gpu', 1)
+            if len(gpu_ids) >= 1:
+                self.device = 'cuda:%d' % (gpu_ids[0])
+                cudnn.fastest = True
+                cudnn.benchmark = True
+            else:
+                self.device = 'cpu'
+                self.logger.warn('No available GPUs, running on CPU.')
+            base_model = getattr(models, self.model_name)(pretrained=True)
+            self.model = create_feature_extractor(
+                base_model, {self.node_name: 'feature'})
+            self.model = self.model.to(self.device).eval()
 
     def extract_cnn_feature(self, frame: np.ndarray) -> np.ndarray:
         """
